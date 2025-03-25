@@ -1,18 +1,26 @@
+document.getElementById('lista-produtos').innerHTML = '<section class="carrinho__produtos__produto"></section>';
+document.getElementById('valor-total').innerHTML = `<span class="texto-azul" id="valor-total">R$ 0</span>`;
+
+
 function adicionar() {
     let qtd = document.getElementById('quantidade').value;
-    let produtoSelecionado = document.getElementById('produto').value;
-    let nomeProduto = iterarNome(produtoSelecionado);
-    let precoProduto = iterarPreco(produtoSelecionado);
 
     if (qtd == 0) {
         qtd = 1;
     }
 
+    let produtoSelecionado = document.getElementById('produto').value;
+    let nomeProduto = iterarNome(produtoSelecionado);
+    let precoProduto = iterarPreco(produtoSelecionado);
+    let produtoTotal = precoProduto*qtd;
+
+
+
     let listaProdutos = document.getElementById('lista-produtos');
     let produto = listaProdutos.querySelector('.carrinho__produtos__produto');
 
     produto.innerHTML = produto.innerHTML + 
-    `<section class = "carrinho__produtos__produto"><span class="texto-azul">${qtd}x</span> ${nomeProduto} <span class="texto-azul">R$${precoProduto}</span></section>`;
+    `<section class = "carrinho__produtos__produto"><span class="texto-azul">${qtd}x</span> ${nomeProduto} <span class="texto-azul">R$${produtoTotal}</span></section>`;
     console.log(produto)
 
 
@@ -23,6 +31,10 @@ function adicionar() {
 
     let total = document.getElementById('valor-total');
     total.innerHTML = `<span class="texto-azul" id="valor-total">R$${calculoTotal}</span>`
+
+    document.getElementById('quantidade').value = '';
+
+
 }
 
 function limpar() {
