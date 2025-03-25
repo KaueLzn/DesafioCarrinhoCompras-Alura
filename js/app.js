@@ -5,8 +5,9 @@ document.getElementById('valor-total').innerHTML = `<span class="texto-azul" id=
 function adicionar() {
     let qtd = document.getElementById('quantidade').value;
 
-    if (qtd == 0) {
-        qtd = 1;
+    if (qtd <= 0 || isNaN(qtd)) {
+        alert('Digite uma quantidade valida');
+        return;
     }
 
     let produtoSelecionado = document.getElementById('produto').value;
